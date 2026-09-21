@@ -1104,7 +1104,7 @@ void RunningModeState::postRender(Graphics& gfx)
 	pauseWindow->draw(gfx);
 
 	// @ BINGO test print
-	drawDebugBingoText(gfx);
+	BingoCore::drawDebugBingoText(gfx);
 }
 
 /**

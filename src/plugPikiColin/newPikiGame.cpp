@@ -40,6 +40,8 @@
 #include "zen/ogTotalScore.h"
 #include "zen/ogTutorial.h"
 
+#include "bingo/bingo.h"
+
 //////////////////////////////////////////////////////
 //////////////// FORWARD DECLARATIONS ////////////////
 //////////////////////////////////////////////////////
@@ -1100,6 +1102,9 @@ void RunningModeState::postRender(Graphics& gfx)
 	// draw the pause menu if active
 	gfx.setOrthogonal(orthoMtx.mMtx, AREA_FULL_SCREEN(gfx));
 	pauseWindow->draw(gfx);
+
+	// @ BINGO test print
+	drawDebugBingoText(gfx);
 }
 
 /**

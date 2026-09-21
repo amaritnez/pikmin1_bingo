@@ -1171,6 +1171,16 @@ config.libs = [
             Object(Matching, "amcstubs/AmcExi2Stubs.c"),
         ],
     },
+    # @ Bingo - Setup
+    {
+        "lib": "bingo",
+        "mw_version": "GC/1.2.5n",
+        "progress_category": "game",
+        "cflags": cflags_pikmin,
+        "objects": [
+            Object(Matching, "bingo/bingo.cpp"),
+        ],
+    },
 ]
 
 
@@ -1184,12 +1194,16 @@ def link_order_callback(module_id: int, objects: List[str]) -> List[str]:
     if not config.non_matching:
         return objects
     if module_id == 0:  # DOL
-        return objects + ["dummy.c"]
+        return objects + [
+            # Add new files here.
+            # NB: any new files added here need to also be added to a library above
+            # "folder/file.cpp",
+            "bingo/bingo.cpp"
+        ]
     return objects
 
-
-# Uncomment to enable the link order callback.
-# config.link_order_callback = link_order_callback
+# UNCOMMENT TO ENABLE THE LINK ORDER CALLBACK - AKA WE NEED THIS FOR CUSTOM FILES!!!!!!!!!!!
+config.link_order_callback = link_order_callback
 
 # Optional extra categories for progress tracking
 # Adjust as desired for your project
